@@ -32,3 +32,7 @@ main,.hero,.section,.section-grid,.copy,.stage,.world,.panel{min-width:0}
   .stage{inset:64px -34vw 0}
   .panel{min-height:250px}
 }
+
+/* portfolio-polish-2026-09-29 */
+:focus-visible{outline:2px solid var(--cyan);outline-offset:4px}.nav{background:linear-gradient(to bottom,rgba(5,7,10,.78),transparent)}.brand{position:relative}.brand::after{content:"";position:absolute;left:0;bottom:-8px;width:32%;height:1px;background:var(--cyan);box-shadow:0 0 14px var(--cyan)}.panel{transition:transform .6s cubic-bezier(.2,.8,.2,1),border-color .4s,box-shadow .4s}.panel:hover{transform:perspective(900px) rotateX(1.5deg) rotateY(-2deg) translateY(-4px);border-color:#ffffff30;box-shadow:0 30px 80px rgba(0,0,0,.28)}.panel::before{box-shadow:40px 26px 0 -1px #80d7ff12}.panel::after{box-shadow:-30px -18px 0 -1px #8e7dff16}.number strong{background:linear-gradient(90deg,var(--text),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+@media(max-width:850px){.panel:hover{transform:none}.nav{background:linear-gradient(to bottom,rgba(5,7,10,.9),transparent)}.copy{padding-bottom:max(8px,env(safe-area-inset-bottom))}}
