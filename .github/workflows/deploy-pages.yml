@@ -1,12 +1,20 @@
-name: Deploy Cinematic Showcase
+name: Deploy Cinematic Studio
+
 on:
   push:
-    branches: [main]
+    branches:
+      - main
   workflow_dispatch:
+
 permissions:
   contents: read
   pages: write
   id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
 jobs:
   deploy:
     environment:
@@ -14,10 +22,37 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v4
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Validate platform
+        run: |
+          test -f index.html
+          test -f cases.html
+          test -f case.html
+          test -f services.html
+          test -f about.html
+          test -f contact.html
+          test -f motion-lab.html
+          test -f launch.html
+          test -f spatial.html
+          test -f technical.html
+          test -f studio.js
+          test -f studio.css
+          test -f app.js
+          test -f lab.js
+          node --check studio.js
+          node --check app.js
+          node --check lab.js
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload static site
+        uses: actions/upload-pages-artifact@v4
         with:
           path: .
-      - id: deployment
+
+      - name: Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v4
