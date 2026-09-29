@@ -23,3 +23,8 @@ document.querySelectorAll('[data-reveal]').forEach(el=>{
   }),{threshold:.2}).observe(el);
 });
 update();
+
+// portfolio-polish-2026-09-29
+const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const coarsePointer=matchMedia('(pointer: coarse)').matches;
+if(reduceMotion||coarsePointer){stage?.style.setProperty('--rx','0deg');stage?.style.setProperty('--ry','0deg')}
