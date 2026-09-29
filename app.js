@@ -28,3 +28,6 @@ update();
 const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const coarsePointer=matchMedia('(pointer: coarse)').matches;
 if(reduceMotion||coarsePointer){stage?.style.setProperty('--rx','0deg');stage?.style.setProperty('--ry','0deg')}
+
+// polish-followup
+if(reduceMotion||coarsePointer){const resetStageMotion=()=>{stage?.style.setProperty('--rx','0deg');stage?.style.setProperty('--ry','0deg')};addEventListener('pointermove',resetStageMotion,{passive:true});addEventListener('scroll',resetStageMotion,{passive:true})}
